@@ -5,6 +5,11 @@
     <title>Image Search API</title>
     <style media="screen">
       .container {
+        font-family: 'sans-serif';
+        max-width: 600px;
+        margin: 50px auto;
+      }
+      .container h1, .container h2 {
         text-align: center;
       }
     </style>
@@ -12,12 +17,17 @@
   <body>
     <div class="container">
       <h1>Image Search API</h1>
-      <h4>Make requests for image serach terms</h4>
+      <h2>Make requests for image serach terms</h2>
+      <h4>Search for images</h4>
       <p>
-        Search for images - /image-search/your-search-term
+        To search follow this url pattern - /image-search/your-search-term
       </p>
       <p>
-        View the latest searches - /image-search/latest
+        Results are returned 10 at a time. To get the next 10 results add the following query parameter - /image-search/your-search-term?offset=10
+      </p>
+      <h4>View the Latest Searches</h4>
+      <p>
+        View the 10 most recent searches - /image-search/latest
       </p>
     </div>
   </body>
