@@ -1,16 +1,17 @@
 const express = require('express');
 const https = require('https');
-const config = require('./config');
 const fs = require('fs');
+require('dotenv').config();
 
 /**
-  Require config with Azure API Key
+  Require Azure API Key from .env
 **/
 
 let app = express();
 
 app.get('/', (req, res) => {
-  res.send({status: 200});
+  // res.send({status: 200});
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/image-search/latest', (req, res) => {
@@ -58,7 +59,7 @@ app.get('/image-search/:query', (req, res) => {
       hostname: 'api.cognitive.microsoft.com',
       path: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?count=10&q=" + query + offset,
       headers: {
-        "Ocp-Apim-Subscription-Key": config.azureKey
+        "Ocp-Apim-Subscription-Key": process.env.AZURE_KEY
       }
     }
     https.get(options, (response) => {
